@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1040342df72906a458782a2503dcc102, type: 3}
+  m_Name: Protagoniste
+  m_EditorClassIdentifier: Assembly-CSharp::Item_Protagoniste
+  itemName: "D\xE9 du Pouvoir Cach\xE9 du Protagoniste"
+  description: "+5 Agi, +5 Int. D\xE9but: 50% +3 \xE0 une stat al\xE9atoire, sinon
+    -2 \xE0 une stat al\xE9atoire."
+  flatPV: 0
+  flatMana: 0
+  flatAgi: 5
+  flatFor: 0
+  flatInt: 5
+  flatDef: 0
+  percentInt: 0

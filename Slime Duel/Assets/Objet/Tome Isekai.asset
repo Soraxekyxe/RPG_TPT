@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 808bebdee4442c94d9b5a244fe0dca31, type: 3}
+  m_Name: Tome Isekai
+  m_EditorClassIdentifier: Assembly-CSharp::Item_TomeIsekai
+  itemName: "Tome du Magicien Fatigu\xE9 par l\u2019Isekai"
+  description: "+15 Int, +10 Mana. \xC0 chaque sort: 30% de gagner +2 Int OU +2 Mana."
+  flatPV: 0
+  flatMana: 10
+  flatAgi: 0
+  flatFor: 0
+  flatInt: 15
+  flatDef: 0
+  percentInt: 0

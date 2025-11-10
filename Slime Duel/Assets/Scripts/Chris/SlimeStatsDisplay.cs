@@ -1,28 +1,33 @@
 using UnityEngine;
+using TMPro;
 
 public class SlimeStatsDisplay : MonoBehaviour
 {
+    [Header("Référence UI (TextMeshPro) pour CE slime")]
+    public TextMeshProUGUI statsText;
+
     private Slime slime;
 
-    void Start()
+    void Awake()
     {
         slime = GetComponent<Slime>();
         if (slime == null)
             Debug.LogError("Aucun script 'Slime' trouvé sur " + gameObject.name);
+        if (statsText == null)
+            Debug.LogError("Assigne un TextMeshProUGUI dans 'statsText' sur " + gameObject.name);
     }
 
-    void OnMouseEnter()
+    void Update()
     {
-        if (slime == null) return;
+        if (slime == null || statsText == null) return;
 
-        Debug.Log(
-            $"--- {slime.classe} ---\n" +
+        statsText.text =
+            $"<b>{slime.name} — {slime.classe}</b>\n" +
             $"PV : {slime.PV}\n" +
             $"Mana : {slime.Mana}\n" +
-            $"Agilité : {slime.Agi}\n" +
-            $"Force : {slime.For}\n" +
-            $"Intelligence : {slime.Int}\n" +
-            $"Défense : {slime.Def}"
-        );
+            $"Agi : {slime.Agi}\n" +
+            $"For : {slime.For}\n" +
+            $"Int : {slime.Int}\n" +
+            $"Def : {slime.Def}";
     }
 }

@@ -7,6 +7,7 @@ public enum SkinRarity
     Rare,
     Epic,
     Legendary
+    [SerializeField] public int ID;
 }
 [CreateAssetMenu(menuName = "SlimeGame/Skins")]
 public class Skin : ScriptableObject

@@ -5,7 +5,7 @@ public class Item_Protagoniste : BaseItemSO
     private void OnEnable(){ itemName="Dé du Pouvoir Caché du Protagoniste";
         description="+5 Agi, +5 Int. Début: 50% +3 à une stat aléatoire, sinon -2 à une stat aléatoire.";
         flatAgi=5; flatInt=5; }
-    public override void OnBattleStart(Slime owner, ItemRuntime rt)
+    public override void OnBattleStart(SlimeUnit owner, ItemRuntime rt)
     {
         bool up = Roll(0.5f); int d = up?3:-2; int i = Random.Range(0,6);
         switch(i){

@@ -5,7 +5,7 @@ public class Item_Poignard : BaseItemSO
     private void OnEnable(){ itemName="Poignard low-cost du RP Quartier";
         description="+10 Agi, +10 For. 15%: inflige 30% des PV max de la cible en dégâts vrais.";
         flatAgi=10; flatFor=10; }
-    public override void OnAttack(Slime owner, Slime target, ItemRuntime rt)
+    public override void OnAttack(SlimeUnit owner, SlimeUnit target, ItemRuntime rt)
     {
         if (target==null) return;
         if (Roll(0.15f))

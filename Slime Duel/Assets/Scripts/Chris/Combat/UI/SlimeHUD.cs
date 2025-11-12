@@ -14,9 +14,23 @@ public class SlimeHUD : MonoBehaviour
 
     public void Bind(SlimeUnit u)
     {
+        // désabonne l'ancien si rebind
+        if (unit) unit.Died -= OnUnitDied;
+
         unit = u;
+        if (unit) unit.Died += OnUnitDied;   // << NEW
         TryAutoWire();
         RefreshImmediate();
+    }
+
+    void OnDestroy()
+    {
+        if (unit) unit.Died -= OnUnitDied;   // propre
+    }
+
+    private void OnUnitDied(SlimeUnit u)
+    {
+        Destroy(gameObject);                  // << NEW : le HUD disparaît
     }
 
     void Awake() => TryAutoWire();
@@ -34,18 +48,10 @@ public class SlimeHUD : MonoBehaviour
     {
         if (!unit) return;
 
-        if (hpSlider)
-        {
-            hpSlider.maxValue = unit.PVMax;
-            hpSlider.value    = unit.PV;
-        }
-        if (mpSlider)
-        {
-            mpSlider.maxValue = unit.ManaMax;   // <<< utilise ManaMax
-            mpSlider.value    = unit.Mana;
-        }
+        if (hpSlider) { hpSlider.maxValue = unit.PVMax; hpSlider.value = unit.PV; }
+        if (mpSlider) { mpSlider.maxValue = unit.ManaMax; mpSlider.value = unit.Mana; }
 
-        if (nameText) nameText.text = unit.slimeName; // ou $"{unit.slimeName} — {unit.classe}"
+        if (nameText) nameText.text = unit.slimeName;
         if (hpText)   hpText.text   = $"{unit.PV}/{unit.PVMax}";
         if (mpText)   mpText.text   = $"{unit.Mana}/{unit.ManaMax}";
     }

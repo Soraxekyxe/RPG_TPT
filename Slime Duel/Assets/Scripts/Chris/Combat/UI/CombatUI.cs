@@ -92,4 +92,14 @@ public class CombatUI : MonoBehaviour
         foreach (var b in tempButtons) if (b) Destroy(b.gameObject);
         tempButtons.Clear();
     }
+    
+    public void HideAll()
+    {
+        // ferme et nettoie l’UI proprement
+        foreach (var b in tempButtons) if (b) Destroy(b.gameObject);
+        tempButtons.Clear();
+        if (skillPanel)  skillPanel.SetActive(false);
+        if (targetPanel) targetPanel.SetActive(false);
+    }
+
 }

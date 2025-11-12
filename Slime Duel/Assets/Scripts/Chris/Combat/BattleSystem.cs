@@ -137,6 +137,17 @@ public class BattleSystem : MonoBehaviour
         act.Execute(user, allies, enemies);
         EndTurn();
     }
+    
+    public void OnUnitDied(SlimeUnit u)
+    {
+        // Si le joueur était en train de choisir une action et que l’actif meurt
+        if (Active == u)
+        {
+            CombatUI.I?.HideAll();
+            EndTurn(); // passe au suivant sans planter
+        }
+    }
+
 }
 
 

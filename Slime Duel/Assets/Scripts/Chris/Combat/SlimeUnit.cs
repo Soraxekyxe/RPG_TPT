@@ -1,3 +1,4 @@
+using System;                                // << NEW
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,15 +20,18 @@ public class SlimeUnit : MonoBehaviour
     public ItemRuntime itemRuntime;
 
     [Header("Runtime")]
-    public int PV, PVMax, Mana, ManaMax, Agi, For, Int, Def;   // <<< ManaMax ajouté
+    public int PV, PVMax, Mana, ManaMax, Agi, For, Int, Def;
     public bool IsAlive => PV > 0;
+
+    // === NEW: évènement & guard de mort ===
+    public event Action<SlimeUnit> Died;
+    private bool deathHandled = false;
 
     // Statuts actifs
     public readonly List<StatusInstance> statuses = new();
 
     void Awake()
     {
-        // init si vide
         if (baseStats.PV == 0 && baseStats.Mana == 0)
         {
             switch (classe)
@@ -44,7 +48,6 @@ public class SlimeUnit : MonoBehaviour
         ManaMax = Mana = Mathf.Max(0, baseStats.Mana);
         Agi = baseStats.Agi; For = baseStats.For; Int = baseStats.Int; Def = baseStats.Def;
 
-        // Equip item
         if (equippedItem != null)
         {
             equippedItem.ApplyOnEquip(this);
@@ -61,15 +64,37 @@ public class SlimeUnit : MonoBehaviour
         Mana = Mathf.Clamp(Mana - Mathf.Max(0, c), 0, ManaMax);
     }
 
-    public void Heal(int v){ PV = Mathf.Min(PVMax, PV + Mathf.Abs(v)); }
+    public void Heal(int v)
+    {
+        PV = Mathf.Min(PVMax, PV + Mathf.Abs(v));
+    }
+
     public void HealPercent(float p){ Heal(Mathf.CeilToInt(PVMax * Mathf.Clamp01(p))); }
 
     public int TakeDamage(int raw, DamageKind kind)
     {
         int dmg = kind == DamageKind.True ? Mathf.Max(0, raw) : Mathf.Max(1, raw - Def);
         PV = Mathf.Max(0, PV - dmg);
+
         equippedItem?.OnReceiveHit(this, null, dmg, itemRuntime);
+
+        // === NEW: check mort ===
+        if (PV == 0 && !deathHandled) Die();
+
         return dmg;
+    }
+
+    // ======== NEW: Mort ========
+    public void Die()
+    {
+        if (deathHandled) return;
+        deathHandled = true;
+
+        Debug.Log($"{slimeName} est K.O.");
+        try { Died?.Invoke(this); } catch { /* ignore */ }
+        BattleSystem.I?.OnUnitDied(this);
+
+        gameObject.SetActive(false); // disparaît visuellement
     }
 
     // ======== Item Hooks ========
@@ -118,7 +143,7 @@ public class SlimeUnit : MonoBehaviour
         PVMax = Mathf.Max(1, PVMax + d);
         PV    = Mathf.Clamp(PV + d, 0, PVMax);
 
-        ManaMax = Mathf.Max(0, ManaMax + d);   // on fait aussi évoluer le max
+        ManaMax = Mathf.Max(0, ManaMax + d);
         Mana    = Mathf.Clamp(Mana + d, 0, ManaMax);
 
         Agi  += d; For += d; Int += d; Def += d;
@@ -155,7 +180,6 @@ public class StatusInstance
         this.turns = turns;
     }
 }
-
 
 
 

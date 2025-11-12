@@ -2,104 +2,142 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using System.Linq;
 
 public class CombatUI : MonoBehaviour
 {
     public static CombatUI I;
 
     [Header("Panels")]
-    public GameObject skillPanel;
-    public GameObject targetPanel;
+    public GameObject commandPanel;      // panneau avec 3 boutons
+    public GameObject skillPanel;        // panneau liste de compétences
 
-    [Header("Prefabs")]
-    public Button skillButtonPrefab;
-    public Button targetButtonPrefab;
+    [Header("Command Buttons")]
+    public Button attackButton;          // "Attaque"
+    public Button skillsButton;          // "Compétences"
+    public Button passButton;            // "Passe"
 
-    List<Button> tempButtons = new();
-    SlimeUnit currentUnit;
-    ActionSO pendingSkill;
+    [Header("Skills Listing")]
+    public Transform skillsContainer;    // parent des boutons
+    public Button skillButtonPrefab;     // prefab bouton skill
+
+    private readonly List<Button> spawned = new();
+    private SlimeUnit current;
 
     void Awake() { I = this; }
 
+    // ==== Appelé par BattleSystem quand c'est au tour du joueur ====
+    public void ShowCommands(SlimeUnit unit)
+    {
+        current = unit;
+        HideAll();
+
+        commandPanel.SetActive(true);
+
+        attackButton.onClick.RemoveAllListeners();
+        attackButton.onClick.AddListener(OnAttackClicked);
+
+        skillsButton.onClick.RemoveAllListeners();
+        skillsButton.onClick.AddListener(() => ShowSkills(current));
+
+        passButton.onClick.RemoveAllListeners();
+        passButton.onClick.AddListener(OnPassClicked);
+    }
+
+    // ==== Attaque de base : choisir l'ennemi en cliquant ====
+    void OnAttackClicked()
+    {
+        commandPanel.SetActive(false);
+
+        var enemies = BattleSystem.I.GetEnemiesOf(current).Where(e => e.IsAlive).ToList();
+        if (enemies.Count == 0) { BattleSystem.I.EndTurn(); return; }
+
+        TargetClickSelector.I.Begin(enemies, target =>
+        {
+            HideAll();
+            BattleSystem.I.PlayerBasicAttack(current, target);
+        });
+    }
+
+    // ==== Passe : régénère 30% du mana puis fin du tour ====
+    void OnPassClicked()
+    {
+        commandPanel.SetActive(false);
+        current.RestoreManaPercent(0.30f);
+        HideAll();
+        BattleSystem.I.EndTurn();
+    }
+
+    // ==== Onglet Compétences ====
     public void ShowSkills(SlimeUnit unit)
     {
-        ClearButtons();
-        currentUnit = unit;
-        pendingSkill = null;
-
+        current = unit;
+        ClearSkills();
+        commandPanel.SetActive(false);
         skillPanel.SetActive(true);
-        targetPanel.SetActive(false);
 
         foreach (var act in unit.actions)
         {
-            // Affiche tout et grise si non jouable (plus ergonomique)
-            var btn = Instantiate(skillButtonPrefab, skillPanel.transform);
-            btn.GetComponentInChildren<TextMeshProUGUI>().text = $"{act.actionName} ({act.manaCost})";
+            if (!act) continue;
+
+            var btn = Instantiate(skillButtonPrefab, skillsContainer);
+            var label = btn.GetComponentInChildren<TextMeshProUGUI>();
+            if (label) label.text = $"{act.actionName} ({act.manaCost})";
             btn.interactable = act.CanPay(unit);
 
-            btn.onClick.AddListener(() => SelectSkill(act));
-            tempButtons.Add(btn);
+            var cap = act; // capture locale
+            btn.onClick.AddListener(() => OnSkillClicked(cap));
+
+            spawned.Add(btn);
         }
     }
 
-    void SelectSkill(ActionSO act)
+    // --- Quand on clique une compétence dans la liste ---
+    void OnSkillClicked(ActionSO act)
     {
-        pendingSkill = act;
-        skillPanel.SetActive(false);
-
-        // Résout les cibles possibles
-        List<SlimeUnit> targets = BattleSystem.I.GetValidTargetsFor(act, currentUnit);
-
-        // Si aucune cible à choisir (Self / All / ou 1 seule option) → exécuter direct
-        bool needsTargetSelection =
-            (act.targetMode == TargetMode.AllySingle || act.targetMode == TargetMode.EnemySingle)
-            && targets.Count > 1;
-
-        if (!needsTargetSelection)
+        // Si la compétence est Single → sélection au clic
+        if (act.targetMode == TargetMode.EnemySingle || act.targetMode == TargetMode.AllySingle)
         {
-            targetPanel.SetActive(false);
-            ClearButtons();
+            skillPanel.SetActive(false);
+            ClearSkills();
 
-            SlimeUnit t = targets.Count > 0 ? targets[0] : null; // optionnel
-            BattleSystem.I.PlayerCastsSkill(currentUnit, pendingSkill, t);
+            var candidates = (act.targetMode == TargetMode.EnemySingle)
+                ? BattleSystem.I.GetEnemiesOf(current).Where(u => u.IsAlive).ToList()
+                : BattleSystem.I.GetAlliesOf(current).Where(u => u.IsAlive).ToList();
+
+            if (candidates.Count == 0) { HideAll(); BattleSystem.I.EndTurn(); return; }
+
+            TargetClickSelector.I.Begin(candidates, chosen =>
+            {
+                HideAll();
+                BattleSystem.I.PlayerCastsSkillOnTarget(current, act, chosen);
+            });
             return;
         }
 
-        // Sinon: afficher la liste de cibles
-        ClearButtons();
-        targetPanel.SetActive(true);
+        // Sinon (Self/All/etc.) → exécution directe
+        var allies  = BattleSystem.I.GetAlliesOf(current);
+        var enemies = BattleSystem.I.GetEnemiesOf(current);
+        act.Execute(current, allies, enemies);
 
-        foreach (var t in targets)
-        {
-            var btn = Instantiate(targetButtonPrefab, targetPanel.transform);
-            btn.GetComponentInChildren<TextMeshProUGUI>().text = t.slimeName;
-            btn.onClick.AddListener(() => ExecuteSkill(t));
-            tempButtons.Add(btn);
-        }
+        HideAll();
+        BattleSystem.I.EndTurn();
     }
 
-    void ExecuteSkill(SlimeUnit t)
-    {
-        ClearButtons();
-        skillPanel.SetActive(false);
-        targetPanel.SetActive(false);
-
-        BattleSystem.I.PlayerCastsSkill(currentUnit, pendingSkill, t);
-    }
-
-    void ClearButtons()
-    {
-        foreach (var b in tempButtons) if (b) Destroy(b.gameObject);
-        tempButtons.Clear();
-    }
-    
+    // ==== Utilitaires UI ====
     public void HideAll()
     {
-        // ferme et nettoie l’UI proprement
-        foreach (var b in tempButtons) if (b) Destroy(b.gameObject);
-        tempButtons.Clear();
-        if (skillPanel)  skillPanel.SetActive(false);
-        if (targetPanel) targetPanel.SetActive(false);
+        commandPanel?.SetActive(false);
+        skillPanel?.SetActive(false);
+        ClearSkills();
+        if (TargetClickSelector.I) TargetClickSelector.I.End();
     }
 
+    void ClearSkills()
+    {
+        foreach (var b in spawned) if (b) Destroy(b.gameObject);
+        spawned.Clear();
+    }
 }
+
+

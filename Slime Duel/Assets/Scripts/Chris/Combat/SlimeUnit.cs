@@ -168,6 +168,14 @@ public class SlimeUnit : MonoBehaviour
         Int = Mathf.Max(0, Int);
         Def = Mathf.Max(0, Def);
     }
+    
+    public void RestoreManaPercent(float p)
+    {
+        int add = Mathf.CeilToInt(ManaMax * Mathf.Clamp01(p));
+        Mana = Mathf.Min(ManaMax, Mana + add);
+        Debug.Log($"{slimeName} régénère {add} mana ({Mana}/{ManaMax})");
+    }
+
 }
 
 // Runtime status instance

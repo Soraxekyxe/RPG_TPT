@@ -35,6 +35,7 @@ public class BattleSystem : MonoBehaviour
         if (Active.HasTag(StatusTag.Stun) || Active.HasTag(StatusTag.Root))
         {
             Debug.Log($"{Active.slimeName} ne peut pas jouer !");
+            CombatLogUI.I?.Log(Active, $"{Active.slimeName} ne peut pas jouer !");
             EndTurn();
             return;
         }
@@ -47,6 +48,7 @@ public class BattleSystem : MonoBehaviour
         if (usable.Count == 0)
         {
             Debug.Log($"{Active.slimeName} ne peut rien faire.");
+            CombatLogUI.I?.Log(Active, $"{Active.slimeName} ne peut rien faire.");
             EndTurn();
             return;
         }
@@ -56,6 +58,7 @@ public class BattleSystem : MonoBehaviour
         var allies  = teamB.Contains(Active) ? teamB.ToList() : teamA.ToList();
         var enemies = teamB.Contains(Active) ? teamA.ToList() : teamB.ToList();
 
+        CombatLogUI.I?.Log(Active, $"{Active.slimeName} utilise {act.actionName}");
         act.Execute(Active, allies, enemies);
         EndTurn();
     }
@@ -67,6 +70,7 @@ public class BattleSystem : MonoBehaviour
         {
             var res = TeamAlive(teamA) ? "ÉQUIPE A GAGNE" : TeamAlive(teamB) ? "ÉQUIPE B GAGNE" : "Match nul";
             Debug.Log($"=== FIN DU COMBAT — {res} ===");
+            CombatLogUI.I?.Log(null, res); // neutre
             enabled = false;
             return;
         }
@@ -80,14 +84,14 @@ public class BattleSystem : MonoBehaviour
 
         Active.TickStartOfTurn();
         Debug.Log($"--- Tour de {Active.slimeName} ({Active.classe}) ---");
+        CombatLogUI.I?.Log(Active, $"Tour de {Active.slimeName}");
 
-        // Tour joueur → afficher skills
+        // Tour joueur → afficher commandes
         if (teamA.Contains(Active))
         {
             waitingForPlayer = true;
             CombatUI.I.ShowCommands(Active);
         }
-
     }
 
     public void EndTurn()
@@ -109,7 +113,7 @@ public class BattleSystem : MonoBehaviour
     bool TeamAlive(SlimeUnit[] t) => t.Any(u => u && u.IsAlive);
     bool IsBattleOver() => !TeamAlive(teamA) || !TeamAlive(teamB);
 
-    // ======== SÉLECTION DE CIBLES POUR UI ========
+    // ======== SÉLECTION DE CIBLES POUR UI (ancienne API) ========
     public List<SlimeUnit> GetValidTargetsFor(ActionSO act, SlimeUnit user)
     {
         var allies  = teamA.Contains(user) ? teamA.ToList() : teamB.ToList();
@@ -127,18 +131,20 @@ public class BattleSystem : MonoBehaviour
         return new List<SlimeUnit> { user };
     }
 
-    // Appelé par la UI quand joueur clique
+    // ======== Appelé par l'UI dans l'ancienne logique (multi-cible / self) ========
     public void PlayerCastsSkill(SlimeUnit user, ActionSO act, SlimeUnit target)
     {
         var allies  = teamA.Contains(user) ? teamA.ToList() : teamB.ToList();
         var enemies = teamA.Contains(user) ? teamB.ToList() : teamA.ToList();
 
         Debug.Log($"🎯 {user.slimeName} lance {act.actionName}");
+        CombatLogUI.I?.Log(user, $"{user.slimeName} utilise {act.actionName}");
 
         act.Execute(user, allies, enemies);
         EndTurn();
     }
-    
+
+    // ======== Mort d'une unité ========
     public void OnUnitDied(SlimeUnit u)
     {
         // Si le joueur était en train de choisir une action et que l’actif meurt
@@ -148,34 +154,42 @@ public class BattleSystem : MonoBehaviour
             EndTurn(); // passe au suivant sans planter
         }
     }
-    // ... dans ta classe BattleSystem
 
+    // ======== Helpers équipes ========
     public List<SlimeUnit> GetAlliesOf(SlimeUnit u)
         => (teamA.Contains(u) ? teamA : teamB).Where(x => x != null).ToList();
 
     public List<SlimeUnit> GetEnemiesOf(SlimeUnit u)
         => (teamA.Contains(u) ? teamB : teamA).Where(x => x != null).ToList();
 
+    public bool IsAlly(SlimeUnit u)
+        => teamA != null && System.Array.IndexOf(teamA, u) >= 0;
+
+    // ======== Attaque de base joueur ========
     public void PlayerBasicAttack(SlimeUnit user, SlimeUnit target)
     {
         int raw = Mathf.Max(1, user.For); // simple: dégâts = For
         int dealt = target.TakeDamage(raw, DamageKind.Physical);
         Debug.Log($"{user.slimeName} attaque {target.slimeName} ({dealt} dmg)");
+
+        CombatLogUI.I?.Log(user, $"{user.slimeName} attaque {target.slimeName} ({dealt} dégâts)");
+
         EndTurn();
     }
-    
+
+    // ======== Compétence mono-cible avec cible choisie ========
     public void PlayerCastsSkillOnTarget(SlimeUnit user, ActionSO act, SlimeUnit target)
     {
         var allies  = GetAlliesOf(user);
         var enemies = GetEnemiesOf(user);
+
+        CombatLogUI.I?.Log(user, $"{user.slimeName} utilise {act.actionName} sur {target.slimeName}");
+
         act.ExecuteOnTarget(user, target, allies, enemies);
         EndTurn();
     }
-
-
-
-
 }
+
 
 
 

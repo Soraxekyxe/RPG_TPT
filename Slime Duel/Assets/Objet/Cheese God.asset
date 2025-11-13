@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Item_CheeseGod
   itemName: Cheese God Mode Snack
   description: "+30 PV, +5 Def. 20%/tour: r\xE9g\xE9n\xE8re 5% PV."
+  icon: {fileID: -7221503779090723029, guid: c9ce2451fcf9e124a8f477d4d5d719f1, type: 3}
   flatPV: 30
   flatMana: 0
   flatAgi: 0

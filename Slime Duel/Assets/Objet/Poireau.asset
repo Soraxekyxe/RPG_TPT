@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: "Le poireau \xE0 90 yen"
   description: "+10 PV, +10 Mana. D\xE9but combat: 50% pri\xE8re (+2 Int/Def) ou
     50% mange (+10% PV max)."
+  icon: {fileID: 177546044622498413, guid: cb4ffb286ed355e48b9b8596b8a82c3c, type: 3}
   flatPV: 10
   flatMana: 10
   flatAgi: 0

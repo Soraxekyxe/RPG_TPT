@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Phantom
   m_EditorClassIdentifier: Assembly-CSharp::Item_Phantom
   itemName: Phantom
-  description: +20 Mana, +20% Intelligence.
+  description: +20 Mana, +20% Int.
+  icon: {fileID: 1973744992799950827, guid: d8732bb6c60cba64abb6fe0eb14b3aa2, type: 3}
   flatPV: 0
   flatMana: 20
   flatAgi: 0

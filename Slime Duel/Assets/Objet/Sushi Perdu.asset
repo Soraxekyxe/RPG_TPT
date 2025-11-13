@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Sushi perdu
   description: "+20 PV. D\xE9but combat: +5 \xE0 toutes les stats OU -5 \xE0 toutes
     les stats."
+  icon: {fileID: -2511965402033511985, guid: 48678258c6df2ab4f95bc22a257c19c1, type: 3}
   flatPV: 20
   flatMana: 0
   flatAgi: 0

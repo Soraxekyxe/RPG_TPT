@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Item_Tortue
   itemName: Pierre du Temple Tortue
   description: "+20 For, +5 Def. Quand PV \u2264 30%, gagne +10 For (une fois)."
+  icon: {fileID: 2328031414737251698, guid: 13bd091df23cad14087e5349ca036762, type: 3}
   flatPV: 0
   flatMana: 0
   flatAgi: 0

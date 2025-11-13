@@ -11,6 +11,7 @@ public class SlimeHUD : MonoBehaviour
     public TextMeshProUGUI mpText;
     public Slider hpSlider;
     public Slider mpSlider;
+    public Image itemIcon;   // <<< icône de l'objet
 
     public void Bind(SlimeUnit u)
     {
@@ -18,19 +19,20 @@ public class SlimeHUD : MonoBehaviour
         if (unit) unit.Died -= OnUnitDied;
 
         unit = u;
-        if (unit) unit.Died += OnUnitDied;   // << NEW
+        if (unit) unit.Died += OnUnitDied;
+
         TryAutoWire();
         RefreshImmediate();
     }
 
     void OnDestroy()
     {
-        if (unit) unit.Died -= OnUnitDied;   // propre
+        if (unit) unit.Died -= OnUnitDied;
     }
 
     private void OnUnitDied(SlimeUnit u)
     {
-        Destroy(gameObject);                  // << NEW : le HUD disparaît
+        Destroy(gameObject);   // le HUD disparaît quand le slime meurt
     }
 
     void Awake() => TryAutoWire();
@@ -42,18 +44,50 @@ public class SlimeHUD : MonoBehaviour
         if (!mpText)   mpText   = transform.Find("MPText")?.GetComponent<TextMeshProUGUI>();
         if (!hpSlider) hpSlider = transform.Find("HP")?.GetComponent<Slider>();
         if (!mpSlider) mpSlider = transform.Find("MP")?.GetComponent<Slider>();
+        if (!itemIcon) itemIcon = transform.Find("ItemIcon")?.GetComponent<Image>(); // <<< important
     }
 
     void LateUpdate()
     {
         if (!unit) return;
 
-        if (hpSlider) { hpSlider.maxValue = unit.PVMax; hpSlider.value = unit.PV; }
-        if (mpSlider) { mpSlider.maxValue = unit.ManaMax; mpSlider.value = unit.Mana; }
+        // Sliders HP / MP
+        if (hpSlider)
+        {
+            hpSlider.maxValue = unit.PVMax;
+            hpSlider.value    = unit.PV;
+        }
 
-        if (nameText) nameText.text = unit.slimeName;
-        if (hpText)   hpText.text   = $"{unit.PV}/{unit.PVMax}";
-        if (mpText)   mpText.text   = $"{unit.Mana}/{unit.ManaMax}";
+        if (mpSlider)
+        {
+            mpSlider.maxValue = unit.ManaMax;
+            mpSlider.value    = unit.Mana;
+        }
+
+        // Nom + niveau + classe
+        if (nameText)
+            nameText.text = $"{unit.slimeName}  Lv.{unit.Lvl} — {unit.classe}";
+
+        if (hpText)
+            hpText.text = $"{unit.PV}/{unit.PVMax}";
+
+        if (mpText)
+            mpText.text = $"{unit.Mana}/{unit.ManaMax}";
+
+        // Icône d'objet
+        if (itemIcon)
+        {
+            var item = unit.equippedItem;
+            if (item != null && item.icon != null)
+            {
+                itemIcon.sprite  = item.icon;
+                itemIcon.enabled = true;
+            }
+            else
+            {
+                itemIcon.enabled = false;
+            }
+        }
     }
 
     public void RefreshImmediate() => LateUpdate();

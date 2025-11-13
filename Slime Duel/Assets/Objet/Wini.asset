@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Pot de miel de Wini
   description: "+20 PV, +5 Def. Quand attaqu\xE9: 20% de r\xE9duire l'Agi de l'attaquant
     de 3."
+  icon: {fileID: -60539037614355622, guid: af0c0cdb56d9b274d828819c009c6bea, type: 3}
   flatPV: 20
   flatMana: 0
   flatAgi: 0

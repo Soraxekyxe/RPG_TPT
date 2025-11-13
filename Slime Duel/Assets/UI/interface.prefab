@@ -557,6 +557,22 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8134841337520998322, guid: 183e78ee3de1c9a4394c3f8f2b092f2c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134841337520998322, guid: 183e78ee3de1c9a4394c3f8f2b092f2c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134841337520998322, guid: 183e78ee3de1c9a4394c3f8f2b092f2c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -67.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134841337520998322, guid: 183e78ee3de1c9a4394c3f8f2b092f2c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -102.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8735069551903222887, guid: 183e78ee3de1c9a4394c3f8f2b092f2c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Item_TomeIsekai
   itemName: "Tome du Magicien Fatigu\xE9 par l\u2019Isekai"
   description: "+15 Int, +10 Mana. \xC0 chaque sort: 30% de gagner +2 Int OU +2 Mana."
+  icon: {fileID: -8531556604054418946, guid: 0b1fe9b3964d2aa4ea5c2cc47eddaa14, type: 3}
   flatPV: 0
   flatMana: 10
   flatAgi: 0

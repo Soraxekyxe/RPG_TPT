@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: "D\xE9 du Pouvoir Cach\xE9 du Protagoniste"
   description: "+5 Agi, +5 Int. D\xE9but: 50% +3 \xE0 une stat al\xE9atoire, sinon
     -2 \xE0 une stat al\xE9atoire."
+  icon: {fileID: 1587085999432991804, guid: 1c076cc38511b1d46a4fbcbab85a83ee, type: 3}
   flatPV: 0
   flatMana: 0
   flatAgi: 5

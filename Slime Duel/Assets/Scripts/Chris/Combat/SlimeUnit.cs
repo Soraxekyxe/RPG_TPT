@@ -96,6 +96,7 @@ public class SlimeUnit : MonoBehaviour
         deathHandled = true;
 
         Debug.Log($"{slimeName} est K.O.");
+        CombatLogUI.I?.Log(this, $"{slimeName} est K.O.", true); // <<< AJOUT
         try { Died?.Invoke(this); } catch { /* ignore */ }
         BattleSystem.I?.OnUnitDied(this);
 

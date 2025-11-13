@@ -74,9 +74,13 @@ public class CombatUI : MonoBehaviour
     {
         commandPanel.SetActive(false);
         current.RestoreManaPercent(0.30f);
+
+        CombatLogUI.I?.Log(current, $"{current.slimeName} passe son tour."); // <<<
+
         HideAll();
         BattleSystem.I.EndTurn();
     }
+
 
     // ==== Onglet Compétences ====
     public void ShowSkills(SlimeUnit unit)

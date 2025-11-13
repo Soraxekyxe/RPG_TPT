@@ -5,6 +5,7 @@ public abstract class BaseItemSO : ScriptableObject
     [Header("UI")]
     public string itemName;
     [TextArea] public string description;
+    public Sprite icon;    // <<< NOUVEAU : icône de l’objet
 
     [Header("Bonus plats à l'équipement")]
     public int flatPV, flatMana, flatAgi, flatFor, flatInt, flatDef;
@@ -14,15 +15,12 @@ public abstract class BaseItemSO : ScriptableObject
 
     public virtual void ApplyOnEquip(SlimeUnit owner)
     {
-        // PV
         owner.PVMax += flatPV;
         owner.PV    += flatPV;
 
-        // Mana (augmente aussi le max)
         owner.ManaMax += flatMana;
         owner.Mana    += flatMana;
 
-        // Autres stats
         owner.Agi += flatAgi;
         owner.For += flatFor;
         owner.Int += flatInt;
@@ -42,9 +40,9 @@ public abstract class BaseItemSO : ScriptableObject
     public virtual void OnReceiveHit(SlimeUnit owner, SlimeUnit attacker, int incomingDamage, ItemRuntime rt) { }
     public virtual void OnKill(SlimeUnit owner, SlimeUnit victim, ItemRuntime rt) { }
     public virtual void OnSpellCast(SlimeUnit owner, SlimeUnit target, ItemRuntime rt) { }
-    
-    public virtual bool ForceRandomSingleTarget => false;
 
+    // Pour des objets spéciaux (ex. Whey)
+    public virtual bool ForceRandomSingleTarget => false;
 
     protected bool Roll(float p) => Random.value < Mathf.Clamp01(p);
 }

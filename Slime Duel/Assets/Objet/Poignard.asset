@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Poignard low-cost du RP Quartier
   description: "+10 Agi, +10 For. 15%: inflige 30% des PV max de la cible en d\xE9g\xE2ts
     vrais."
+  icon: {fileID: 225199046930815026, guid: 5f041604adaaaa34b930a9b66598108f, type: 3}
   flatPV: 0
   flatMana: 0
   flatAgi: 10

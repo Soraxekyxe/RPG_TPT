@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Micro Auto-Tune
   description: "+10 Agi, +10 For. 20%: ignore la DEF de l\u2019ennemi pour cette
     attaque."
+  icon: {fileID: 5400619608696071167, guid: 58d123f3ad7ce4449b7a26fbe71a506f, type: 3}
   flatPV: 0
   flatMana: 0
   flatAgi: 10

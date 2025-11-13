@@ -73,6 +73,11 @@ public class Gacha : MonoBehaviour
     public List<int> ID_Dump()
     {
         Skin result = pull();
+        Inventory playerInventory = Inventory.Instance;
+        if(playerInventory.Skins.Contains(result))
+            return;
+        
+        playerInventory.AddSkin(result);
         Debug.Log($"Tirage réussi : {result.name} ({result.skinRarity})");
     }
 }

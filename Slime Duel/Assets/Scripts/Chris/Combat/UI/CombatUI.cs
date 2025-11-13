@@ -57,6 +57,16 @@ public class CombatUI : MonoBehaviour
             HideAll();
             BattleSystem.I.PlayerBasicAttack(current, target);
         });
+        
+        // Si l'objet impose une cible aléatoire → on choisit direct
+        if (current.equippedItem && current.equippedItem.ForceRandomSingleTarget)
+        {
+            var rnd = enemies[Random.Range(0, enemies.Count)];
+            HideAll();
+            BattleSystem.I.PlayerBasicAttack(current, rnd);
+            return;
+        }
+
     }
 
     // ==== Passe : régénère 30% du mana puis fin du tour ====
@@ -106,6 +116,15 @@ public class CombatUI : MonoBehaviour
                 : BattleSystem.I.GetAlliesOf(current).Where(u => u.IsAlive).ToList();
 
             if (candidates.Count == 0) { HideAll(); BattleSystem.I.EndTurn(); return; }
+            
+            // Objet impose une cible aléatoire → pick direct
+            if (current.equippedItem && current.equippedItem.ForceRandomSingleTarget)
+            {
+                var chosen = candidates[Random.Range(0, candidates.Count)];
+                HideAll();
+                BattleSystem.I.PlayerCastsSkillOnTarget(current, act, chosen);
+                return;
+            }
 
             TargetClickSelector.I.Begin(candidates, chosen =>
             {
@@ -113,6 +132,8 @@ public class CombatUI : MonoBehaviour
                 BattleSystem.I.PlayerCastsSkillOnTarget(current, act, chosen);
             });
             return;
+            
+
         }
 
         // Sinon (Self/All/etc.) → exécution directe

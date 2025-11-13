@@ -42,6 +42,9 @@ public abstract class BaseItemSO : ScriptableObject
     public virtual void OnReceiveHit(SlimeUnit owner, SlimeUnit attacker, int incomingDamage, ItemRuntime rt) { }
     public virtual void OnKill(SlimeUnit owner, SlimeUnit victim, ItemRuntime rt) { }
     public virtual void OnSpellCast(SlimeUnit owner, SlimeUnit target, ItemRuntime rt) { }
+    
+    public virtual bool ForceRandomSingleTarget => false;
+
 
     protected bool Roll(float p) => Random.value < Mathf.Clamp01(p);
 }

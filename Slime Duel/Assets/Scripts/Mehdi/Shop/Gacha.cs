@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -60,6 +61,11 @@ public class Gacha : MonoBehaviour
     public void PullButton()
     {
         Skin result = pull();
+        Inventory playerInventory = Inventory.Instance;
+        if(playerInventory.Skins.Contains(result))
+            return;
+        
+        playerInventory.AddSkin(result);
         Debug.Log($"Tirage réussi : {result.name} ({result.skinRarity})");
     }
 }

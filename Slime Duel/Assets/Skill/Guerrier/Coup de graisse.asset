@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Coup de graisse
   m_EditorClassIdentifier: Assembly-CSharp::ActionSO
   actionName: Coup de graisse
-  description: 
+  description: "D\xE9g\xE2t bas\xE9 sur la def 25%."
   manaCost: 2
   targetMode: 3
   isSignature: 0
@@ -24,9 +24,9 @@ MonoBehaviour:
   useDef: 1
   usePVMax: 0
   useMissingPV: 0
-  percentFor: 0.33
+  percentFor: 0
   percentInt: 0
-  percentDef: 0.33
+  percentDef: 0.25
   percentPVMax: 0
   percentMissingPV: 0
   hits: 1

@@ -85,8 +85,9 @@ public class BattleSystem : MonoBehaviour
         if (teamA.Contains(Active))
         {
             waitingForPlayer = true;
-            CombatUI.I.ShowSkills(Active);
+            CombatUI.I.ShowCommands(Active);
         }
+
     }
 
     public void EndTurn()
@@ -147,6 +148,32 @@ public class BattleSystem : MonoBehaviour
             EndTurn(); // passe au suivant sans planter
         }
     }
+    // ... dans ta classe BattleSystem
+
+    public List<SlimeUnit> GetAlliesOf(SlimeUnit u)
+        => (teamA.Contains(u) ? teamA : teamB).Where(x => x != null).ToList();
+
+    public List<SlimeUnit> GetEnemiesOf(SlimeUnit u)
+        => (teamA.Contains(u) ? teamB : teamA).Where(x => x != null).ToList();
+
+    public void PlayerBasicAttack(SlimeUnit user, SlimeUnit target)
+    {
+        int raw = Mathf.Max(1, user.For); // simple: dégâts = For
+        int dealt = target.TakeDamage(raw, DamageKind.Physical);
+        Debug.Log($"{user.slimeName} attaque {target.slimeName} ({dealt} dmg)");
+        EndTurn();
+    }
+    
+    public void PlayerCastsSkillOnTarget(SlimeUnit user, ActionSO act, SlimeUnit target)
+    {
+        var allies  = GetAlliesOf(user);
+        var enemies = GetEnemiesOf(user);
+        act.ExecuteOnTarget(user, target, allies, enemies);
+        EndTurn();
+    }
+
+
+
 
 }
 

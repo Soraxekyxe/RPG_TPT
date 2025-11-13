@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Formation tortue
   m_EditorClassIdentifier: Assembly-CSharp::ActionSO
   actionName: Formation tortue
-  description: 
+  description: Augmente la Def de 20%.
   manaCost: 10
   targetMode: 0
   isSignature: 0
@@ -33,12 +33,12 @@ MonoBehaviour:
   randomSplitHits: 0
   doesHeal: 0
   healPercentInt: 0
-  applyStatus: {fileID: 11400000, guid: 0c2fd974c15598d4d9d15ffef17a4675, type: 2}
-  applyStatusTurns: 1
+  applyStatus: {fileID: 0}
+  applyStatusTurns: 3
   applyStatusStacks: 1
   addPercentFor: 0
   addPercentInt: 0
   addPercentAgi: 0
-  addPercentDef: 0
+  addPercentDef: 20
   drainMana: 0
   drainManaPercentOfTargetRemaining: 0

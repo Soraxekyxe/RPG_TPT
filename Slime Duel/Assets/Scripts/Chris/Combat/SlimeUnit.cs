@@ -5,7 +5,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class SlimeUnit : MonoBehaviour
 {
- [Header("Expérience et niveau")]   
+    [Header("Expérience et niveau")]
     public int CurrentExp = 0;
     public int NextLvl = 100;
     public int Lvl = 1;

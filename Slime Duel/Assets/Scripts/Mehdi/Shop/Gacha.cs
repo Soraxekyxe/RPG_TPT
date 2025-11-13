@@ -59,6 +59,8 @@ public class Gacha : MonoBehaviour
     }
     
     public void PullButton()
+    
+    public void PullButton()
     {
         Skin result = pull();
         Inventory playerInventory = Inventory.Instance;
@@ -70,24 +72,7 @@ public class Gacha : MonoBehaviour
     }
     public List<int> ID_Dump()
     {
-        List<int> IDs_Skins_Locked = new List<int>{};
-        foreach (var i in Commun_Skins)
-        {
-            IDs_Skins_Locked.Add(i.ID);
-        }
-        foreach (var i in Rare_Skins)
-        {
-            IDs_Skins_Locked.Add(i.ID);
-        }
-        foreach (var i in Epic_Skins)
-        {
-            IDs_Skins_Locked.Add(i.ID);
-        }
-        foreach (var i in Legendary_Skins)
-        {
-            IDs_Skins_Locked.Add(i.ID);
-        }
-        return IDs_Skins_Locked;
+        Skin result = pull();
+        Debug.Log($"Tirage réussi : {result.name} ({result.skinRarity})");
     }
-    
 }

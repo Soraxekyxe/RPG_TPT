@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4019be2ee37381a449173b81080376e4, type: 3}
-  m_Name: ZAC E
+  m_Name: La tartine de chair
   m_EditorClassIdentifier: Assembly-CSharp::ActionSO
-  actionName: ZAC E
-  description: 
+  actionName: La tartine de chair
+  description: "D\xE9g\xE2t sur tous les ennemis en fonction 15% des PV max."
   manaCost: 20
   targetMode: 4
   isSignature: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
   percentFor: 0
   percentInt: 0
   percentDef: 0
-  percentPVMax: 0.15
+  percentPVMax: 0.2
   percentMissingPV: 0
   hits: 1
   randomSplitHits: 0

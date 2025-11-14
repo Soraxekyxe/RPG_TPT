@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Skin : ScriptableObject
 {
-    [SerializeField] private Sprite Visual;
+    [SerializeField] public Sprite Visual;
     [SerializeField] public int ID;
     public enum SkinRarity
     {

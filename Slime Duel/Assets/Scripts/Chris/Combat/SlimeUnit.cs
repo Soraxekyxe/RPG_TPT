@@ -14,6 +14,7 @@ public class SlimeUnit : MonoBehaviour
     [Header("Données")]
     public string slimeName = "Slime";
     public SlimeClass classe;
+    public Skin MonSkin;
 
     [Header("Liste des compétences connues")]
     public List<ActionSO> actions = new();
@@ -39,7 +40,7 @@ public class SlimeUnit : MonoBehaviour
     // ======== VISUEL (flash + skin) ========
     [Header("Visuel")]
     public SpriteRenderer spriteRenderer;   // sprite du slime
-    public Sprite skinSprite;              // sprite de skin assignable dans l’inspector
+    //public Sprite skinSprite;              // sprite de skin assignable dans l’inspector
     public Color hitFlashColor  = Color.red;
     public Color healFlashColor = Color.green;
     public float flashDuration  = 0.12f;
@@ -88,7 +89,7 @@ public class SlimeUnit : MonoBehaviour
             referenceSize = spriteRenderer.bounds.size;
 
             // 2) applique le skin en conservant la taille
-            if (skinSprite != null)
+            if (MonSkin.Visual != null)
                 ApplySkinSameSize();
         }
 
@@ -101,11 +102,11 @@ public class SlimeUnit : MonoBehaviour
     // Applique le skin et ajuste la scale pour garder la même taille que le carré
     void ApplySkinSameSize()
     {
-        if (!spriteRenderer || skinSprite == null)
+        if (!spriteRenderer || MonSkin.Visual == null)
             return;
 
         // applique le nouveau sprite
-        spriteRenderer.sprite = skinSprite;
+        spriteRenderer.sprite = MonSkin.Visual;
 
         // taille actuelle du nouveau sprite (avec la scale actuelle)
         Vector2 newSize = spriteRenderer.bounds.size;

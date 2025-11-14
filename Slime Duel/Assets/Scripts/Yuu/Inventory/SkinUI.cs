@@ -17,7 +17,7 @@ namespace Yuu.Inventory
         {
             manager = inventoryUI;
             icon.sprite = skin.Icon;
-            rarityText.text = skin.skinRarity.ToString();
+            rarityText.text = skin.MySkinRarity.ToString();
         }
     }
 }

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Teemo
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   Visual: {fileID: 21300000, guid: 16ef99bc359c71144a5450cb2c2db0a7, type: 3}
-  skinRarity: 3
+  ID: 0
+  MySkinRarity: 3

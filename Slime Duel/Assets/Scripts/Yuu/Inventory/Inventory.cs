@@ -4,7 +4,7 @@ using UnityEngine;
 public class Inventory
 {
     public static readonly Inventory Instance = new Inventory();
-    
+    public int coins;
     private List<Skin> skins = new List<Skin>();
 
     public void AddSkin(Skin skin)

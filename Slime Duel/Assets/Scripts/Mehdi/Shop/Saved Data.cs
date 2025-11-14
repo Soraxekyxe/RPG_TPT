@@ -8,6 +8,7 @@ public class SavedData
 {
     public int[] IDs_Skins_Unlocked;
     public int[] IDs_Skins_locked;
+    // coins
     public SavedData(Gacha gacha, Inventaire inventaire)
     {
         IDs_Skins_Unlocked = gacha.ID_Dump().ToArray();

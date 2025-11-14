@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Feldup
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   Visual: {fileID: 21300000, guid: fdf3cdc6c3fd4c24086103991fc28e4b, type: 3}
-  skinRarity: 1
+  ID: 0
+  MySkinRarity: 1

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: NOOT NOOT
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   Visual: {fileID: 21300000, guid: 24bb1e6e9e3ca504f9ad803cd467c34b, type: 3}
-  skinRarity: 2
+  ID: 0
+  MySkinRarity: 2

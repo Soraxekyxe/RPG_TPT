@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Hatsune Miku
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   Visual: {fileID: 21300000, guid: 4cab93bc2801aef43ac0ed6ac492c99e, type: 3}
-  skinRarity: 2
+  ID: 0
+  MySkinRarity: 2

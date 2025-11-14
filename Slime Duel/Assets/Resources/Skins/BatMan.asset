@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: BatMan
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   Visual: {fileID: 21300000, guid: e0db34d8b44633748a661c4b2af97a5a, type: 3}
-  skinRarity: 1
+  ID: 0
+  MySkinRarity: 1

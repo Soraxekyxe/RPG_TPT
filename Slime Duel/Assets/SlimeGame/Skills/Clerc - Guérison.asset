@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4019be2ee37381a449173b81080376e4, type: 3}
+  m_Name: "Clerc - Gu\xE9rison"
+  m_EditorClassIdentifier: Assembly-CSharp::ActionSO
+  actionName: "Clerc - Gu\xE9rison"
+  description: "Retire les statuts de tous les alli\xE9s."
+  manaCost: 12
+  targetMode: 2
+  isSignature: 0
+  doesDamage: 0
+  damageKind: 0
+  useFor: 0
+  useInt: 0
+  useDef: 0
+  usePVMax: 0
+  useMissingPV: 0
+  percentFor: 0
+  percentInt: 0
+  percentDef: 0
+  percentPVMax: 0
+  percentMissingPV: 0
+  hits: 1
+  randomSplitHits: 0
+  doesHeal: 0
+  healPercentInt: 0
+  applyStatus: {fileID: 11400000, guid: efd9f293927434e409d522c7600287b5, type: 2}
+  applyStatusTurns: 1
+  applyStatusStacks: 1
+  addPercentFor: 0
+  addPercentInt: 0
+  addPercentAgi: 0
+  addPercentDef: 0
+  drainMana: 0
+  drainManaPercentOfTargetRemaining: 0

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Krokmou
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   Visual: {fileID: 21300000, guid: 4069ff3214de6c34295150fdaf3fb9d5, type: 3}
-  skinRarity: 2
+  ID: 0
+  MySkinRarity: 2

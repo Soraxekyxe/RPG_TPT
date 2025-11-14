@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Behelit
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   Visual: {fileID: 21300000, guid: 6e283979f6bcd7d48be27f3188b53a91, type: 3}
-  skinRarity: 1
+  ID: 0
+  MySkinRarity: 1

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Poisson Steve
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   Visual: {fileID: 21300000, guid: dfc0081ac81982141bc680c23d690f73, type: 3}
-  skinRarity: 3
+  ID: 0
+  MySkinRarity: 3

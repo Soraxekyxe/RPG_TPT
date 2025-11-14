@@ -28,21 +28,21 @@ public class SkinLoadData : MonoBehaviour
 
             foreach (var m in AllSkins)
             {
-                switch (m.rarity)
+                switch (m.MySkinRarity)
                 {
-                    case 0:
+                    case Skin.SkinRarity.Common:
                         inventaire.Gacha_Machine.Commun_Skins.Add(m);
                         Debug.Log("un skin a été rajouté a commun");
                         break;
-                    case 1:
+                    case Skin.SkinRarity.Rare:
                         inventaire.Gacha_Machine.Rare_Skins.Add(m);
                         Debug.Log("un skin a été rajouté a rare");
                         break;
-                    case 2:
+                    case Skin.SkinRarity.Epic:
                         inventaire.Gacha_Machine.Epic_Skins.Add(m);
                         Debug.Log("un skin a été rajouté a epic");
                         break;
-                    case 3:
+                    case Skin.SkinRarity.Legendary:
                         inventaire.Gacha_Machine.Legendary_Skins.Add(m);
                         Debug.Log("un skin a été rajouté a legendaire");
                         break;
@@ -76,18 +76,18 @@ public class SkinLoadData : MonoBehaviour
             {
                 if (l.ID == k)
                 {
-                    switch (l.rarity)
+                    switch (l.MySkinRarity)
                     {
-                        case 0:
+                        case Skin.SkinRarity.Common:
                             inventaire.Gacha_Machine.Commun_Skins.Add(l);
                             break;
-                        case 1:
+                        case Skin.SkinRarity.Rare:
                             inventaire.Gacha_Machine.Rare_Skins.Add(l);
                             break;
-                        case 2:
+                        case Skin.SkinRarity.Epic:
                             inventaire.Gacha_Machine.Epic_Skins.Add(l);
                             break;
-                        case 3:
+                        case Skin.SkinRarity.Legendary:
                             inventaire.Gacha_Machine.Legendary_Skins.Add(l);
                             break;
                         default:

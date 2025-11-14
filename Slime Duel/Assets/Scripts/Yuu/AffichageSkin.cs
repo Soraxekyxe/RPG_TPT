@@ -9,13 +9,8 @@ public class GachaManager : MonoBehaviour
 
     private GameObject _currentSkin;  
 
-    public void OnPullButton()
+    public void OnPullButton(Skin pulledSkin)
     {
-       //Pour chopper le skin ta capté
-        Skin pulledSkin = gacha.pull();
-        Debug.Log($"Tirage : {pulledSkin.name} ({pulledSkin.skinRarity})");
-
-       //pour suprimmer l'ancien et afficher le nouveau 
         if (_currentSkin != null)
             Destroy(_currentSkin);
 

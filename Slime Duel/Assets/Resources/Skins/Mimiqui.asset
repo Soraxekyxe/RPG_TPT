@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Mimiqui
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   Visual: {fileID: 21300000, guid: 141217ee4139db44abf756e0aed0be89, type: 3}
-  skinRarity: 2
+  ID: 0
+  MySkinRarity: 2

@@ -23,11 +23,22 @@ public class BattleSystem : MonoBehaviour
     // NEW : empêche de lancer plusieurs coroutines IA
     private bool enemyTurnRunning = false;
 
+    
+    
     void Start()
     {
         BuildTurnOrder();
+
+        // orientation des sprites
+        foreach (var s in teamA)
+            if (s) s.SetFacingLeft(false);   // équipe joueur → regarde vers la droite
+
+        foreach (var s in teamB)
+            if (s) s.SetFacingLeft(true);    // équipe ennemie → regarde vers la gauche
+
         NextTurnStart();
     }
+
 
     void Update()
     {

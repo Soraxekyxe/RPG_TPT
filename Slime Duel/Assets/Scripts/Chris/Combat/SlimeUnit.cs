@@ -1,5 +1,5 @@
 using System;
-using System.Collections;                  // <<< ajouté pour les coroutines
+using System.Collections;                  // pour les coroutines
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,18 +36,23 @@ public class SlimeUnit : MonoBehaviour
     // Statuts actifs
     public readonly List<StatusInstance> statuses = new();
 
-    // ======== VISUEL (flash dégâts / soin) ========
+    // ======== VISUEL (flash + skin) ========
     [Header("Visuel")]
-    public SpriteRenderer spriteRenderer;            // sprite du slime
-    public Color hitFlashColor  = Color.red;        // couleur quand il prend des dégâts
-    public Color healFlashColor = Color.green;      // couleur quand il est soigné
+    public SpriteRenderer spriteRenderer;   // sprite du slime
+    public Sprite skinSprite;              // sprite de skin assignable dans l’inspector
+    public Color hitFlashColor  = Color.red;
+    public Color healFlashColor = Color.green;
     public float flashDuration  = 0.12f;
 
     private Color baseColor = Color.white;
     private Coroutine flashRoutine;
 
+    // taille de référence (celle du carré de base)
+    private Vector2 referenceSize;
+
     void Awake()
     {
+        // ========= Stats =========
         if (baseStats.PV == 0 && baseStats.Mana == 0)
         {
             switch (classe)
@@ -71,13 +76,67 @@ public class SlimeUnit : MonoBehaviour
             equippedItem.OnEquip(this, itemRuntime);
         }
 
-        // Visuel : récupère le SpriteRenderer si non assigné
+        // ========= Visuel / Sprite =========
         if (!spriteRenderer)
             spriteRenderer = GetComponent<SpriteRenderer>();
+
         if (spriteRenderer)
+        {
             baseColor = spriteRenderer.color;
 
+            // 1) mémorise la taille actuelle (le carré de base)
+            referenceSize = spriteRenderer.bounds.size;
+
+            // 2) applique le skin en conservant la taille
+            if (skinSprite != null)
+                ApplySkinSameSize();
+        }
+
+        // ========= Collider auto (pour les clics) =========
+        EnsureColliderMatchesSprite();
+
         ClampRuntime();
+    }
+
+    // Applique le skin et ajuste la scale pour garder la même taille que le carré
+    void ApplySkinSameSize()
+    {
+        if (!spriteRenderer || skinSprite == null)
+            return;
+
+        // applique le nouveau sprite
+        spriteRenderer.sprite = skinSprite;
+
+        // taille actuelle du nouveau sprite (avec la scale actuelle)
+        Vector2 newSize = spriteRenderer.bounds.size;
+        if (newSize.x <= 0f || newSize.y <= 0f)
+            return;
+
+        // ratio pour matcher la taille de référence
+        float scaleX = referenceSize.x / newSize.x;
+        float scaleY = referenceSize.y / newSize.y;
+
+        // on prend le plus petit pour garder les proportions du sprite
+        float factor = Mathf.Min(scaleX, scaleY);
+
+        // applique sur la scale actuelle
+        var s = transform.localScale;
+        transform.localScale = new Vector3(s.x * factor, s.y * factor, s.z);
+    }
+
+    // Crée / met à jour un BoxCollider2D à la taille du sprite
+    void EnsureColliderMatchesSprite()
+    {
+        if (!spriteRenderer || spriteRenderer.sprite == null)
+            return;
+
+        var box = GetComponent<BoxCollider2D>();
+        if (box == null)
+            box = gameObject.AddComponent<BoxCollider2D>();
+
+        // taille du collider = taille visuelle du sprite (après scale)
+        box.size = spriteRenderer.sprite.bounds.size;
+        box.offset = spriteRenderer.sprite.bounds.center;
     }
 
     // ======== Combat Utilities ========
@@ -287,6 +346,16 @@ public class SlimeUnit : MonoBehaviour
         }
     }
 
+    // ======== ORIENTATION VISUELLE ========
+    public void SetFacingLeft(bool left)
+    {
+        if (!spriteRenderer)
+            spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer)
+            spriteRenderer.flipX = left;
+    }
+
     // ======== FLASH VISUEL ========
     void StartFlash(Color c)
     {
@@ -325,11 +394,4 @@ public class StatusInstance
         this.turns = turns;
     }
 }
-
-
-
-
-
-
-
 

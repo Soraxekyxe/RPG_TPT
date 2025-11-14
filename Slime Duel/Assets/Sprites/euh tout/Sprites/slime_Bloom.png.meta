@@ -3,8 +3,8 @@ guid: 43ba3c6ff4e91284daa43cda5147cbdb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5284958309271290998
-    second: slime_Bloom_0
+      213: -89474194355962169
+    second: slime_bloom_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,10 +100,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: slime_Bloom_0
+      name: slime_bloom_0
       rect:
         serializedVersion: 2
-        x: 245
+        x: 398
         y: 1224
         width: 4487
         height: 2669
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a8bb22b2b6e08a6b0800000000000000
-      internalID: -5284958309271290998
+      spriteID: 7ce39dcb1bf12cef0800000000000000
+      internalID: -89474194355962169
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      slime_Bloom_0: -5284958309271290998
+      slime_bloom_0: -89474194355962169
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

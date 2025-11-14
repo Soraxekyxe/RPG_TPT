@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722433498ae62f54a8aa9f204fa013d7, type: 3}
   m_Name: Fraise
   m_EditorClassIdentifier: Assembly-CSharp::Skin
-  Visual: {fileID: 21300000, guid: 54bd67444c579ec42bc60b1fd92897a8, type: 3}
-  skinRarity: 0
+  Visual: {fileID: 4195705920337281439, guid: 54bd67444c579ec42bc60b1fd92897a8, type: 3}
+  ID: 0
+  MySkinRarity: 0

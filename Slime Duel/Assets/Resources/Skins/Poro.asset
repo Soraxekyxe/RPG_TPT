@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722433498ae62f54a8aa9f204fa013d7, type: 3}
   m_Name: Poro
   m_EditorClassIdentifier: Assembly-CSharp::Skin
-  Visual: {fileID: 21300000, guid: 92ed93958c292ea4c8b0cfa5f8492ebf, type: 3}
+  Visual: {fileID: -8787429805962270421, guid: 92ed93958c292ea4c8b0cfa5f8492ebf, type: 3}
   ID: 0
   MySkinRarity: 1

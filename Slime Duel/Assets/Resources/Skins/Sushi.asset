@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Sushi
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   Visual: {fileID: 5897862828997064245, guid: 315535eb0f659924b869d9babbdc3bca, type: 3}
-  skinRarity: 0
+  ID: 0
+  MySkinRarity: 0

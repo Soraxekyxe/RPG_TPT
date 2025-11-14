@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722433498ae62f54a8aa9f204fa013d7, type: 3}
   m_Name: Gru
   m_EditorClassIdentifier: Assembly-CSharp::Skin
-  Visual: {fileID: 21300000, guid: e27616dfc8f23b94e83f192ff33b8dc4, type: 3}
+  Visual: {fileID: -7381663304212471063, guid: e27616dfc8f23b94e83f192ff33b8dc4, type: 3}
   ID: 0
   MySkinRarity: 2

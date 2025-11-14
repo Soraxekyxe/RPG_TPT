@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722433498ae62f54a8aa9f204fa013d7, type: 3}
   m_Name: Arhi
   m_EditorClassIdentifier: Assembly-CSharp::Skin
-  Visual: {fileID: 21300000, guid: 9cdc03fb0702da545bd1d440c301cc34, type: 3}
+  Visual: {fileID: 7989300615158725390, guid: 9cdc03fb0702da545bd1d440c301cc34, type: 3}
   ID: 0
   MySkinRarity: 2

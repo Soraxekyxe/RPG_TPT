@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722433498ae62f54a8aa9f204fa013d7, type: 3}
   m_Name: Evoli
   m_EditorClassIdentifier: Assembly-CSharp::Skin
-  Visual: {fileID: 21300000, guid: 36e29cfb84eb6c9408e1b68b3b0acce7, type: 3}
+  Visual: {fileID: 4785384808094053768, guid: 36e29cfb84eb6c9408e1b68b3b0acce7, type: 3}
   ID: 0
   MySkinRarity: 1

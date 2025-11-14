@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722433498ae62f54a8aa9f204fa013d7, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: Assembly-CSharp::Skin
-  Visual: {fileID: -5284958309271290998, guid: 43ba3c6ff4e91284daa43cda5147cbdb, type: 3}
+  Visual: {fileID: -89474194355962169, guid: 43ba3c6ff4e91284daa43cda5147cbdb, type: 3}
   ID: 0
   MySkinRarity: 2

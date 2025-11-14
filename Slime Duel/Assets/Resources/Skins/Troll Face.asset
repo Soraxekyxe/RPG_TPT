@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 722433498ae62f54a8aa9f204fa013d7, type: 3}
-  m_Name: Sushi
+  m_Name: Troll Face
   m_EditorClassIdentifier: Assembly-CSharp::Skin
-  Visual: {fileID: 5897862828997064245, guid: 315535eb0f659924b869d9babbdc3bca, type: 3}
+  Visual: {fileID: 1510953853310270032, guid: 0641227faa677544aa1cb3f7a85b184b, type: 3}
   ID: 0
-  MySkinRarity: 0
+  MySkinRarity: 3

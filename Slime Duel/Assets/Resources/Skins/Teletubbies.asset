@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Teletubbies
   m_EditorClassIdentifier: Assembly-CSharp::Skin
   Visual: {fileID: -103901838574825727, guid: 888b899833b019c41a6a5b5e349f3bab, type: 3}
-  skinRarity: 0
+  ID: 0
+  MySkinRarity: 0

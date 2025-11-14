@@ -346,6 +346,28 @@ public class SlimeUnit : MonoBehaviour
             manager.AssignSkills(this);
         }
     }
+    
+    // Changement de classe
+    public void ChangeClass(SlimeClass newClass)
+    {
+        classe = newClass;
+
+        switch (classe)
+        {
+            case SlimeClass.Guerrier: baseStats = new Stats{PV=60,Mana=10,Agi=8, For=10,Int=5, Def=35}; break;
+            case SlimeClass.Mage:     baseStats = new Stats{PV=35,Mana=40,Agi=9, For=4, Int=16,Def=20}; break;
+            case SlimeClass.Assassin: baseStats = new Stats{PV=40,Mana=15,Agi=16,For=17,Int=6, Def=20}; break;
+            case SlimeClass.Clerc:    baseStats = new Stats{PV=60,Mana=30,Agi=8, For=7, Int=15,Def=25}; break;
+            case SlimeClass.Druide:   baseStats = new Stats{PV=45,Mana=25,Agi=10,For=8, Int=12,Def=24}; break;
+        }
+
+        PVMax = PV = baseStats.PV;
+        ManaMax = Mana = baseStats.Mana;
+        Agi = baseStats.Agi; For = baseStats.For; Int = baseStats.Int; Def = baseStats.Def;
+
+        ClampRuntime();
+    }
+
 
     // ======== ORIENTATION VISUELLE ========
     public void SetFacingLeft(bool left)

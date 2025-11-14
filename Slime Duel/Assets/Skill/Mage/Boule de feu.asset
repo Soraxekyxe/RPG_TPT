@@ -18,6 +18,8 @@ MonoBehaviour:
   manaCost: 10
   targetMode: 4
   isSignature: 0
+  Niveau: 1
+  classe: 1
   doesDamage: 1
   damageKind: 1
   useFor: 0
@@ -34,8 +36,8 @@ MonoBehaviour:
   randomSplitHits: 0
   doesHeal: 0
   healPercentInt: 0
-  applyStatus: {fileID: 11400000, guid: a9fd09e8e064f444294df2a28c2ec1af, type: 2}
-  applyStatusTurns: 3
+  applyStatus: {fileID: 0}
+  applyStatusTurns: 1
   applyStatusStacks: 1
   addPercentFor: 0
   addPercentInt: 0

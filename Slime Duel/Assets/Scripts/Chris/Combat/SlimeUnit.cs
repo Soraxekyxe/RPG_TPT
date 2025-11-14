@@ -78,7 +78,10 @@ public class SlimeUnit : MonoBehaviour
 
     public int TakeDamage(int raw, DamageKind kind)
     {
-        int dmg = kind == DamageKind.True ? Mathf.Max(0, raw) : Mathf.Max(1, raw - Def);
+        
+        int dmg = kind == DamageKind.True 
+            ? Mathf.Max(0, raw) 
+            : Mathf.Max(1, Mathf.RoundToInt(raw * (100f / (100f + Def))));
         PV = Mathf.Max(0, PV - dmg);
 
         equippedItem?.OnReceiveHit(this, null, dmg, itemRuntime);
@@ -250,6 +253,12 @@ public class SlimeUnit : MonoBehaviour
                 break;
         }
         Debug.Log($"{slimeName} monte au niveau {Lvl} ! Stats améliorées : PV={PVMax}, Mana={ManaMax}, For={For}, Int={Int}, Agi={Agi}, Def={Def}");
+        
+        SkillManager manager = FindObjectOfType<SkillManager>();
+        if (manager != null)
+        {
+            manager.AssignSkills(this);
+        }
     }
 
 }

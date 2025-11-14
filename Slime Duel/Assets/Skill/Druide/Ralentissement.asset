@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Ralentissement
   m_EditorClassIdentifier: Assembly-CSharp::ActionSO
   actionName: Ralentissement
-  description: Baisse agi de 20%
+  description: Baisse agi de 20%.
   manaCost: 20
   targetMode: 3
   isSignature: 0
+  Niveau: 1
+  classe: 4
   doesDamage: 0
   damageKind: 0
   useFor: 0

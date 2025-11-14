@@ -17,6 +17,8 @@ MonoBehaviour:
   manaCost: 0
   targetMode: 3
   isSignature: 0
+  Niveau: 4
+  classe: 1
   doesDamage: 0
   damageKind: 1
   useFor: 0

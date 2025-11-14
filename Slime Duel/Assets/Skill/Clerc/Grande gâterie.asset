@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4019be2ee37381a449173b81080376e4, type: 3}
-  m_Name: "Grande g\xE2terie 1"
+  m_Name: "Grande g\xE2terie"
   m_EditorClassIdentifier: Assembly-CSharp::ActionSO
   actionName: "Grande g\xE2terie"
   description: "Soigne beaucoup un alli\xE9.\r\nSoin : 150% Int"
   manaCost: 20
   targetMode: 1
   isSignature: 0
+  Niveau: 10
+  classe: 3
   doesDamage: 0
   damageKind: 0
   useFor: 0

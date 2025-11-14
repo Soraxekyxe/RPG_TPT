@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: A la demi mole
   m_EditorClassIdentifier: Assembly-CSharp::ActionSO
   actionName: A la demi mole
-  description: "Inflige h\xE9morragie (saignement).\r\nD\xE9g\xE2ts : 80% For\r\n"
+  description: "Inflige des d\xE9gats.\r\nD\xE9g\xE2ts : 80% For\r\n"
   manaCost: 12
   targetMode: 3
   isSignature: 0
-  doesDamage: 0
+  Niveau: 1
+  classe: 2
+  doesDamage: 1
   damageKind: 0
   useFor: 1
   useInt: 0

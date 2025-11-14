@@ -17,6 +17,8 @@ MonoBehaviour:
   manaCost: 10
   targetMode: 0
   isSignature: 0
+  Niveau: 5
+  classe: 0
   doesDamage: 0
   damageKind: 0
   useFor: 0
@@ -34,7 +36,7 @@ MonoBehaviour:
   doesHeal: 0
   healPercentInt: 0
   applyStatus: {fileID: 0}
-  applyStatusTurns: 3
+  applyStatusTurns: 1
   applyStatusStacks: 1
   addPercentFor: 0
   addPercentInt: 0

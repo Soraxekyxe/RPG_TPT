@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: b129fb92bdd7fdc4e8ad0a61196be2cf
+AudioImporter:
+  externalObjects: {}
+  serializedVersion: 7
+  defaultSettings:
+    serializedVersion: 2
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+    preloadAudioData: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  loadInBackground: 0
+  ambisonic: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 281615
+  packageName: "Ultimate Game Music Pack \u21162"
+  packageVersion: 1.0
+  assetPath: "Assets/Ultimate Game Music Pack \u2116 2/Phantasmagoria - Max Longo/08.
+    Phantasmagoria - The Fifth Corner.wav"
+  uploadId: 655551

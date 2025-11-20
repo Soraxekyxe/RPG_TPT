@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0182c030e876440bd3179ca3043b8c, type: 3}
+  m_Name: Poignard
+  m_EditorClassIdentifier: Assembly-CSharp::Item_Poignard
+  itemName: Poignard low-cost du RP Quartier
+  description: "+10 Agi, +10 For. 15%: inflige 30% des PV max de la cible en d\xE9g\xE2ts
+    vrais."
+  icon: {fileID: 225199046930815026, guid: 5f041604adaaaa34b930a9b66598108f, type: 3}
+  flatPV: 0
+  flatMana: 0
+  flatAgi: 10
+  flatFor: 10
+  flatInt: 0
+  flatDef: 0
+  percentInt: 0

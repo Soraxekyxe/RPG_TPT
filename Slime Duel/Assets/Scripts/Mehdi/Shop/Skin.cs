@@ -1,8 +1,18 @@
-using System.Net.Mime;
 using UnityEngine;
+[CreateAssetMenu(menuName = "SlimeGame/Skins")]
 
-public class Skin : MonoBehaviour
+public class Skin : ScriptableObject
 {
-    [SerializeField] private Sprite Visual;
-    [SerializeField] [Header("0 = commun, rare = 1, epic = 2, legendaire = 3")] public int rarity = 0; // commun = 0, rare = 1, epic = 2, legendaire = 3
+    [SerializeField] public Sprite Visual;
+    [SerializeField] public int ID;
+    public enum SkinRarity
+    {
+        Common,
+        Rare,
+        Epic,
+        Legendary
+    }
+
+    public SkinRarity MySkinRarity = SkinRarity.Common;
+    public Sprite Icon => Visual;
 }

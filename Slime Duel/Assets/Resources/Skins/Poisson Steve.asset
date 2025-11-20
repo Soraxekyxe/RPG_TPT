@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722433498ae62f54a8aa9f204fa013d7, type: 3}
+  m_Name: Poisson Steve
+  m_EditorClassIdentifier: Assembly-CSharp::Skin
+  Visual: {fileID: 5274944363240817280, guid: dfc0081ac81982141bc680c23d690f73, type: 3}
+  ID: 0
+  MySkinRarity: 3

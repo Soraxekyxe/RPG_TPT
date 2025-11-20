@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4ac8bcf46afd042af085da95b806c0, type: 3}
+  m_Name: Cheese God
+  m_EditorClassIdentifier: Assembly-CSharp::Item_CheeseGod
+  itemName: Cheese God Mode Snack
+  description: "+30 PV, +5 Def. 20%/tour: r\xE9g\xE9n\xE8re 5% PV."
+  icon: {fileID: -7221503779090723029, guid: c9ce2451fcf9e124a8f477d4d5d719f1, type: 3}
+  flatPV: 30
+  flatMana: 0
+  flatAgi: 0
+  flatFor: 0
+  flatInt: 0
+  flatDef: 5
+  percentInt: 0

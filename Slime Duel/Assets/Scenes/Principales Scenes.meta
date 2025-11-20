@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Slime Duel/Assets/Scenes/Art Scenes/test.unity.meta
+guid: 38b0e3a6a0ccf734ab2a2158ec622766
+========
 guid: 15e5e62f1925e90438af12376a91aa9a
 folderAsset: yes
+>>>>>>>> a893897 (UI fonctionnel):Slime Duel/Assets/Scenes/Principales Scenes.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

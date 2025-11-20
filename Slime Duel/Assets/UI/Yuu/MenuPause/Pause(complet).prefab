@@ -1028,6 +1028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
   pauseMenuUI: {fileID: 8047605010269622469}
+  pauseSoundClip: {fileID: 0}
 --- !u!1001 &3463595378126545429
 PrefabInstance:
   m_ObjectHideFlags: 0

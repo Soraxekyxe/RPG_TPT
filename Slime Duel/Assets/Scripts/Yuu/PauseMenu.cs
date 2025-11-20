@@ -6,11 +6,26 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     private bool isPaused = false;
 
+    [SerializeField] private AudioClip pauseSoundClip;
+
+    private MusicManager musicManager;
+
+    private void Awake()
+    {
+        musicManager = FindObjectOfType<MusicManager>();
+
+        if (musicManager == null)
+            Debug.LogError("Aucun MusicManager trouvé dans la scène !");
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            musicManager.PlaySFX(pauseSoundClip);
+
             Debug.Log("TES EN PAUSE");
+
             if (isPaused)
                 Resume();
             else
@@ -42,15 +57,11 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Quit()
-     {
+    {
 #if UNITY_EDITOR
-        Debug.Log("Je quitte la simu pour de vrai");
-        // quitte playmode quand tu test dans editor
         UnityEditor.EditorApplication.isPlaying = false;
-            
 #else
         Application.Quit();
 #endif
     }
-    
 }
